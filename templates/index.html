@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lung Cancer Detection</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        form {
+            margin: 20px 0;
+        }
+
+        .input-group {
+            margin: 10px 0;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Please enter your symptoms</h1>
+        <h4>Enter your symptoms in the form of 1 or 2 (1- no, 2- yes)</h4>
+        <form id="numberForm" action="{{url_for('predict')}}" method="post">
+            <div class="number-inputs">
+                <div class="input-group">
+                    <label for="age">Enter your age:</label>
+                    <input type="number" id="age" name="age" value="1" required>
+                </div>
+                <div class="input-group">
+                    <label for="smoke">Do you smoke?</label>
+                    <input type="number" id="smoke" name="smoke" value="1" required>
+                </div>
+                <div class="input-group">
+                    <label for="yellow_fingers">Do you have yello fingers?</label>
+                    <input type="number" id="yellow_fingers" name="yellow_fingers" value="1" required>
+                </div>
+                <div class="input-group">
+                    <label for="anxiety">Do you have anxiety?</label>
+                    <input type="number" id="anxiety" name="anxiety" value="1" required>
+                </div>
+                <div class="input-group">
+                    <label for="peer_pressure">Are you facing peer pressure?</label>
+                    <input type="number" id="peer_pressure" name="peer_pressure" value="1" required>
+                </div>
+                <div class="input-group">
+                    <label for="chronic_disease">Do you any chronic diseases?</label>
+                    <input type="number" id="chronic_disease" name="chronic_disease" value="1" required>
+                </div>
+                <div class="input-group">
+                    <label for="fatigue">Are you having any signs of fatigueness?</label>
+                    <input type="number" id="fatigue" name="fatigue" value="1" required>
+                </div>
+                <div class="input-group">
+                    <label for="allergy">Do you have any allergy?</label>
+                    <input type="number" id="allergy" name="allergy" value="1" required>
+                </div>
+                <div class="input-group">
+                    <label for="wheezing">Do you have wheezing?</label>
+                    <input type="number" id="wheezing" name="wheezing" value="1" required>
+                </div>
+                <div class="input-group">
+                    <label for="alcohol">Do you consume alcohol?</label>
+                    <input type="number" id="alcohol" name="alcohol" value="1" required>
+                </div>
+                <div class="input-group">
+                    <label for="cough">Are you having frequent coughs?</label>
+                    <input type="number" id="cough" name="cough" value="1" required>
+                </div>
+                <div class="input-group">
+                    <label for="shortness_breath">Are you experiencing shortness of breath?</label>
+                    <input type="number" id="shortness_breath" name="shortness_breath" value="1" required>
+                </div>
+                <div class="input-group">
+                    <label for="swallowing">Are you experiencing difficulty in swallowing?</label>
+                    <input type="number" id="swallowing" name="swallowing" value="1" required>
+                </div>
+                <div class="input-group">
+                    <label for="chest_pain">Are you having chest pain?</label>
+                    <input type="number" id="chest_pain" name="chest_pain" value="1" required>
+                </div>
+            </div>
+            <button type="submit">Predict</button>
+            <h4 class="output_text">{{ prediction_text }}</h4>
+            <h5>Prediction is in form of 0 or 1 where 0-No cancer and 1- you have cancer</h5>
+        </form>
+    </div>
+</body>
+</html>
